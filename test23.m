@@ -10,13 +10,13 @@ close all;
 syms c10 c01 c11 c20 c02 I1 I2 lambda p
 
 
-W = c10*(I1-3) + c01*(I2-3) +c11*(I1-3)*(I2-3) +c20*(I1-3)^2 + c02*(I1-3)^2
+W = c10*(I1-3) + c01*(I2-3) +c11*(I1-3)*(I2-3) +c20*(I1-3)^2 + c02*(I2-3)^2
 dWdI1 = diff(W,I1)
 dWdI2 = diff(W,I2)
 
 lambda1 = lambda
-lambda2 = lambda1^-2
-lambda3 = lambda1^-2
+lambda2 = lambda1^(-1/2)
+lambda3 = lambda1^(-1/2)
 
 F = [
     lambda1,0,0;
@@ -37,8 +37,9 @@ c01 = -1
 c11 = 0.2
 c20 = 0.2
 c02 = 0.1
+
 I1 = lambda1^2 + lambda2^2 + lambda3^2
-I2 = lambda1*lambda2 + lambda2*lambda3 + lambda3*lambda1
+I2 = lambda1^2*lambda2^2 + lambda2^2*lambda3^2 + lambda3^2*lambda1^2
 
 sigma = subs(sigma)
 sigma = subs(sigma)
